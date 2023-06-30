@@ -1,0 +1,20 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+  <id>cn.nicepkg.gptrunner.intellij</id>
+  <name>GPT-Runner</name>
+  <vendor>nicepkg</vendor>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <resource-bundle>messages.LangBundle</resource-bundle>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow
+      factoryClass="cn.nicepkg.gptrunner.intellij.toolWindow.GPTRunnerWindowFactory"
+      id="GPT-Runner"/>
+  </extensions>
+
+  <applicationListeners>
+
+  </applicationListeners>
+</idea-plugin>
