@@ -124,8 +124,8 @@ Once IDE with `robot-server` has started, you can open the `http://localhost:808
 > 
 > Run IDE for UI tests using predefined *Run IDE for UI Tests* and then *Run Tests* configurations or by invoking the `./gradlew runIdeForUiTests` and `./gradlew check` Gradle tasks.
 
-A dedicated [Run UI Tests](.github/workflows/run-ui-tests.yml) workflow is available for manual triggering to run UI tests against three different operating systems: macOS, Windows, and Linux.
-Due to its optional nature, this workflow isn't set as an automatic one, but this can be easily achieved by changing the `on` trigger event, like in the [Build](.github/workflows/build.yml) workflow file.
+A dedicated [Run UI Tests](.github/workflows/run-ui-tests.yml.disabled) workflow is available for manual triggering to run UI tests against three different operating systems: macOS, Windows, and Linux.
+Due to its optional nature, this workflow isn't set as an automatic one, but this can be easily achieved by changing the `on` trigger event, like in the [Build](.github/workflows/build.yml.disabled) workflow file.
 
 ## Qodana integration
 
