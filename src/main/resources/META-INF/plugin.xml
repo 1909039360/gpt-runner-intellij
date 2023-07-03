@@ -10,11 +10,25 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <toolWindow
-      factoryClass="cn.nicepkg.gptrunner.intellij.toolWindow.GPTRunnerWindowFactory"
+      factoryClass="cn.nicepkg.gptrunner.intellij.windows.GPTRunnerWindowFactory"
       id="GPT-Runner"/>
+
+    <applicationService
+      serviceInterface="cn.nicepkg.gptrunner.intellij.services.IGPTRunnerExecutableService"
+      serviceImplementation="cn.nicepkg.gptrunner.intellij.services.impl.GPTRunnerExecutableService"/>
+
+    <projectService
+      serviceInterface="cn.nicepkg.gptrunner.intellij.services.IGPTRunnerService"
+      serviceImplementation="cn.nicepkg.gptrunner.intellij.services.impl.GPTRunnerService"/>
   </extensions>
 
   <applicationListeners>
+    <listener
+      class="cn.nicepkg.gptrunner.intellij.listeners.ProjectStateListener"
+      topic="com.intellij.openapi.project.ProjectManagerListener"/>
 
+    <listener
+      class="cn.nicepkg.gptrunner.intellij.listeners.PluginInstallerStateListener"
+      topic="com.intellij.ide.plugins.PluginStateListener"/>
   </applicationListeners>
 </idea-plugin>

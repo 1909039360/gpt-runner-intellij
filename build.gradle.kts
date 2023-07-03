@@ -2,6 +2,7 @@ import com.github.gradle.node.pnpm.task.PnpmTask
 import com.github.gradle.node.task.NodeTask
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = providers.gradleProperty(key)
 fun environment(key: String) = providers.environmentVariable(key)
@@ -27,6 +28,7 @@ repositories {
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
 //    implementation(libs.annotations)
+  implementation(libs.coroutines)
 }
 
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
@@ -90,6 +92,10 @@ val runGPTRunnerServerTask = tasks.register("runGPTRunnerServerTask", NodeTask::
   script.set(File("../gpt-runner-web/dist/start-server.mjs"))
 }
 
+tasks.withType<JavaCompile>().configureEach {
+  options.isIncremental = true
+}
+
 tasks {
   wrapper {
     gradleVersion = properties("gradleVersion").get()
@@ -128,6 +134,10 @@ tasks {
         )
       }
     }
+  }
+
+  runIde {
+    autoReloadPlugins.set(true)
   }
 
   // Configure UI tests plugin
